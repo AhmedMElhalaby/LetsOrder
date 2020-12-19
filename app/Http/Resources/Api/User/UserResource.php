@@ -42,6 +42,7 @@ class UserResource extends JsonResource
         $Object['avatar'] = asset($this->getAvatar());
         $Object['lat'] = $this->getLat();
         $Object['lng'] = $this->getLng();
+        $Object['type'] = $this->type;
         $Subscription = UserSubscription::where('user_id',$this->getId())->where('status',Constant::SUBSCRIPTION_STATUSES['Approved'])->get();
         $Object['is_subscribed'] = count($Subscription)>0;
         $Object['Subscriptions'] = ($Subscription)?UserSubscriptionResource::collection($Subscription):null;
