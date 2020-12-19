@@ -54,6 +54,7 @@ class InstallRequest extends ApiRequest
             'PaymentMethod'=>Constant::PAYMENT_METHOD,
             'TransactionStatus'=>Constant::TRANSACTION_STATUS,
             'TransactionTypes'=>Constant::TRANSACTION_TYPES,
+            'UserTypes'=>Constant::USER_TYPE,
         ];
         return $this->successJsonResponse([],$data);
     }
