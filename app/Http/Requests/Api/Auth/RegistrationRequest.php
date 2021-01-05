@@ -16,6 +16,10 @@ use App\Models\User;
  * @property mixed email
  * @property mixed dob
  * @property mixed type
+ * @property mixed lat
+ * @property mixed lng
+ * @property mixed provider_type
+ * @property mixed app_locale
  * @property mixed gender
  * @property mixed device_token
  * @property mixed device_type
@@ -48,6 +52,7 @@ class RegistrationRequest extends ApiRequest
             'mobile' => 'required|numeric|unique:users',
             'email' => 'required|email|unique:users',
             'type'=>'required|in:'.Constant::USER_TYPE_RULES,
+            'provider_type'=>'required_if:type,'.Constant::USER_TYPE['Provider'].'|in:'.Constant::PROVIDER_TYPE_RULES,
             'device_token' => 'string|required_with:device_type',
             'device_type' => 'string|required_with:device_token',
             'app_locale' => 'sometimes|in:en,ar',
@@ -67,6 +72,7 @@ class RegistrationRequest extends ApiRequest
         $user->setLat(@$this->lat);
         $user->setLng(@$this->lng);
         $user->setType($this->type);
+        $user->setProviderType($this->provider_type);
         $user->setAppLocale($this->filled('app_locale')?$this->app_locale:'en');
         if ($this->filled('device_token') && $this->filled('device_type')) {
             $user->setDeviceToken($this->device_token);
@@ -83,7 +89,6 @@ class RegistrationRequest extends ApiRequest
 
         }
         return $this->successJsonResponse( [__('messages.saved_successfully')],new UserResource($user,$tokenResult->accessToken),'User');
-
     }
 
 }

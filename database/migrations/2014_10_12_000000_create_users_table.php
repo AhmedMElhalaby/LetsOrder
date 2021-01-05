@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->tinyInteger('type')->index();
+            $table->tinyInteger('provider_type')->nullable()->index();
             $table->text('bio')->nullable();
             $table->string('work_time')->nullable();
             $table->timestamp('email_verified_at')->nullable();

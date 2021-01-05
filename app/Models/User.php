@@ -16,6 +16,7 @@ use Laravel\Passport\HasApiTokens;
  * @property string password
  * @property mixed avatar
  * @property integer type
+ * @property mixed provider_type
  * @property string app_locale
  * @property mixed bio
  * @property mixed work_time
@@ -32,7 +33,7 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','mobile','email','password','avatar','type','bio','work_time','app_locale','is_active','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at',];
+    protected $fillable = ['name','mobile','email','password','avatar','type','provider_type','bio','work_time','app_locale','is_active','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at',];
 
     protected $hidden = ['password'];
 
@@ -187,6 +188,22 @@ class User extends Authenticatable
     public function setType(int $type): void
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProviderType()
+    {
+        return $this->provider_type;
+    }
+
+    /**
+     * @param mixed $provider_type
+     */
+    public function setProviderType($provider_type): void
+    {
+        $this->provider_type = $provider_type;
     }
 
     /**

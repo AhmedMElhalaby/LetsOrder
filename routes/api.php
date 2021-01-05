@@ -19,6 +19,7 @@ Route::group([
     Route::post('login','AuthController@login');
     Route::post('signup','AuthController@register');
     Route::post('forget_password','AuthController@forget_password');
+    Route::post('check_reset_code','AuthController@check_reset_code');
     Route::post('reset_password','AuthController@reset_password');
     Route::group([
         'middleware' => 'auth:api'
@@ -60,6 +61,25 @@ Route::group([
         Route::get('show','TicketController@show');
         Route::post('store','TicketController@store');
         Route::post('response','TicketController@response');
+    });
+    Route::group([
+        'prefix' => 'foods',
+    ], function() {
+        Route::get('/','FoodController@index');
+        Route::get('show','FoodController@show');
+        Route::post('store','FoodController@store');
+        Route::post('update','FoodController@update');
+        Route::post('destroy','FoodController@destroy');
+        Route::post('media/destroy','FoodController@destroy_media');
+    });
+    Route::group([
+        'prefix' => 'coupons',
+    ], function() {
+        Route::get('/','CouponController@index');
+        Route::get('show','CouponController@show');
+        Route::post('store','CouponController@store');
+        Route::post('update','CouponController@update');
+        Route::post('destroy','CouponController@destroy');
     });
 });
 

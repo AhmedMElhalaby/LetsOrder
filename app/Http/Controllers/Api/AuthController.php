@@ -10,6 +10,7 @@ use App\Http\Requests\Api\Auth\RefreshRequest;
 use App\Http\Requests\Api\Auth\RegistrationRequest;
 use App\Http\Requests\Api\Auth\ResendVerifyRequest;
 use App\Http\Requests\Api\Auth\ResetPasswordRequest;
+use App\Http\Requests\Api\Auth\CheckResetPasswordRequest;
 use App\Http\Requests\Api\Auth\UserRequest;
 use App\Http\Requests\Api\Auth\VerifyForm;
 use App\Http\Resources\Api\User\UserResource;
@@ -133,6 +134,15 @@ class AuthController extends Controller
      * @return JsonResponse
      */
     public function reset_password(ResetPasswordRequest $request): JsonResponse
+    {
+        return $request->persist();
+    }
+
+    /**
+     * @param CheckResetPasswordRequest $request
+     * @return JsonResponse
+     */
+    public function check_reset_code(CheckResetPasswordRequest $request): JsonResponse
     {
         return $request->persist();
     }

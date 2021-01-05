@@ -46,6 +46,7 @@ class Constant
         'Holding'=>3,
     ];
     const MEDIA_TYPES = [
+        'Food'=>1
     ];
     const SETTING_TYPE = [
         'Page'=>1,
@@ -57,4 +58,9 @@ class Constant
         'Provider'=>2
     ];
     const USER_TYPE_RULES = '1,2';
+    const PROVIDER_TYPE=[
+        'CoffeeShop'=>1,
+        'Restaurant'=>2
+    ];
+    const PROVIDER_TYPE_RULES = '1,2';
 }
