@@ -42,6 +42,9 @@ class InstallSeeder extends Seeder
             'Subscriptions',
             'UserSubscription',
             'BankAccounts',
+            'Categories',
+            'Cities',
+            'BankAccounts',
         ];
         $Settings = [
             'privacy'=>[

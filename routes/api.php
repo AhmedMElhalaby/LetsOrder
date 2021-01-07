@@ -90,6 +90,7 @@ Route::group([
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
+        Route::get('providers','HomeController@providers');
         Route::post('subscribe','HomeController@subscribe');
         Route::post('send_notification','HomeController@send_notification');
     });

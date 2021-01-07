@@ -13,13 +13,15 @@ use Laravel\Passport\HasApiTokens;
  * @property string name
  * @property string mobile
  * @property mixed email
+ * @property mixed city_id
  * @property string password
  * @property mixed avatar
  * @property integer type
  * @property mixed provider_type
  * @property string app_locale
  * @property mixed bio
- * @property mixed work_time
+ * @property mixed open_time
+ * @property mixed close_time
  * @property boolean is_active
  * @property string|null device_token
  * @property string|null device_type
@@ -33,10 +35,13 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','mobile','email','password','avatar','type','provider_type','bio','work_time','app_locale','is_active','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at',];
+    protected $fillable = ['name','mobile','city_id','email','password','avatar','type','provider_type','bio','open_time','close_time','app_locale','is_active','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at',];
 
     protected $hidden = ['password'];
 
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
 //    protected static function boot()
 //    {
 //        parent::boot();
@@ -108,6 +113,55 @@ class User extends Authenticatable
     {
         $this->email = $email;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCityId()
+    {
+        return $this->city_id;
+    }
+
+    /**
+     * @param mixed $city_id
+     */
+    public function setCityId($city_id): void
+    {
+        $this->city_id = $city_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOpenTime()
+    {
+        return $this->open_time;
+    }
+
+    /**
+     * @param mixed $open_time
+     */
+    public function setOpenTime($open_time): void
+    {
+        $this->open_time = $open_time;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCloseTime()
+    {
+        return $this->close_time;
+    }
+
+    /**
+     * @param mixed $close_time
+     */
+    public function setCloseTime($close_time): void
+    {
+        $this->close_time = $close_time;
+    }
+
 
     /**
      * @return string|null

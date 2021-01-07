@@ -5,9 +5,11 @@ namespace App\Http\Requests\Api\Home;
 use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Home\CategoryResource;
+use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\FaqResource;
 use App\Http\Resources\Api\Home\SubscriptionResource;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Subscription;
@@ -45,6 +47,7 @@ class InstallRequest extends ApiRequest
         $data['Faqs'] = FaqResource::collection(Faq::where('is_active',true)->get());
         $data['Subscriptions'] = SubscriptionResource::collection(Subscription::where('is_active',true)->get());
         $data['Categories'] = CategoryResource::collection(Category::where('is_active',true)->get());
+        $data['Cities'] = CityResource::collection(City::where('is_active',true)->get());
         $data['Essentials'] = [
             'TicketsStatus'=>Constant::TICKETS_STATUS,
             'NotificationType'=>Constant::NOTIFICATION_TYPE,

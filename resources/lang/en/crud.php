@@ -151,4 +151,12 @@ return [
         'image' => 'Image',
         'is_active' => 'Status',
     ],
+    'City'=>[
+        'crud_names' => 'Cities',
+        'crud_name' => 'City',
+        'crud_the_name' => 'The City',
+        'name' => 'Name',
+        'name_ar' => 'Name Ar',
+        'is_active' => 'Status',
+    ],
 ];

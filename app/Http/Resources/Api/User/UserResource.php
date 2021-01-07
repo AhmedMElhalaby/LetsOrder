@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Api\User;
 
 use App\Helpers\Constant;
+use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\SubscriptionResource;
 use App\Http\Resources\Api\Home\UserSubscriptionResource;
 use App\Models\Notification;
@@ -36,6 +37,8 @@ class UserResource extends JsonResource
         $Object['id'] = $this->getId();
         $Object['name'] = $this->getName();
         $Object['mobile'] = $this->getMobile();
+        $Object['city_id'] = $this->getCityId();
+        $Object['City'] = new CityResource($this->city);
         $Object['email'] = $this->getEmail();
         $Object['mobile_verified_at'] = $this->getMobileVerifiedAt()?Carbon::parse($this->getMobileVerifiedAt())->format('Y-m-d'):null;
         $Object['email_verified_at'] = $this->getEmailVerifiedAt()?Carbon::parse($this->getEmailVerifiedAt())->format('Y-m-d'):null;

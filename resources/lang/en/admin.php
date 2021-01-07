@@ -19,6 +19,7 @@ return [
         'user_managements'=>'Users Managements',
         'app_auctions'=>'App Auctions',
         'app_data'=>'App Data',
+        'cities'=>'Cities',
         'admins'=>'Admins',
         'settings'=>'Settings',
         'faqs'=>'FAQ',

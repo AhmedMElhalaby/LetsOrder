@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('mobile')->unique();
             $table->string('password');
+            $table->foreignId('city_id');
             $table->string('avatar')->nullable();
             $table->string('device_token')->nullable();
             $table->string('device_type')->nullable();
@@ -27,7 +28,8 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('type')->index();
             $table->tinyInteger('provider_type')->nullable()->index();
             $table->text('bio')->nullable();
-            $table->string('work_time')->nullable();
+            $table->time('open_time')->nullable();
+            $table->time('close_time')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
             $table->string('app_locale')->default('en');

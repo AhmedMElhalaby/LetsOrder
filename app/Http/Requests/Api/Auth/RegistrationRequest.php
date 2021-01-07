@@ -48,6 +48,7 @@ class RegistrationRequest extends ApiRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'city_id' => 'required|exists:cities,id',
             'password' => 'required|string|min:6',
             'mobile' => 'required|numeric|unique:users',
             'email' => 'required|email|unique:users',
@@ -68,6 +69,7 @@ class RegistrationRequest extends ApiRequest
         $user->setName($this->name);
         $user->setPassword($this->password);
         $user->setMobile($this->mobile);
+        $user->setCityId($this->city_id);
         $user->setEmail($this->email);
         $user->setLat(@$this->lat);
         $user->setLng(@$this->lng);

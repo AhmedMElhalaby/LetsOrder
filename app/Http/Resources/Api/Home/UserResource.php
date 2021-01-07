@@ -18,6 +18,8 @@ class UserResource extends JsonResource
         $Object['id'] = $this->getId();
         $Object['name'] = $this->getName();
         $Object['mobile'] = $this->getMobile();
+        $Object['city_id'] = $this->getCityId();
+        $Object['City'] = new CityResource($this->city);
         $Object['email'] = $this->getEmail();
         $Object['avatar'] = $this->getAvatar();
         $Object['lat'] = $this->getLat();

@@ -5,21 +5,27 @@ namespace App\Http\Requests\Api\Auth;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\User\UserResource;
 use App\Traits\ResponseTrait;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @property mixed name
+ * @property mixed city_id
+ * @property mixed mobile
+ * @property mixed email
+ * @property mixed lat
+ * @property mixed lng
+ * @property mixed bio
+ * @property mixed open_time
+ * @property mixed close_time
+ * @property mixed app_locale
+ * @property mixed device_token
+ * @property mixed device_type
+ */
 class UserRequest extends ApiRequest
 {
     use ResponseTrait;
 
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
 
     /**
@@ -31,6 +37,7 @@ class UserRequest extends ApiRequest
     {
         return [
             'name' => 'string|max:255,',
+            'city_id' => 'exists:cities,id',
             'mobile' => 'numeric|min:6|unique:users,mobile,'. auth()->user()->id,
             'email' => 'email|unique:users,email,'. auth()->user()->id,
             'device_token' => 'string|required_with:device_type',
@@ -52,6 +59,9 @@ class UserRequest extends ApiRequest
         if ($this->filled('name')){
             $logged->setName($this->name);
         }
+        if ($this->filled('city_id')){
+            $logged->setCityId($this->city_id);
+        }
         if ($this->filled('mobile')){
             $logged->setMobile($this->mobile);
         }
@@ -67,8 +77,11 @@ class UserRequest extends ApiRequest
         if ($this->filled('bio')){
             $logged->setBio($this->bio);
         }
-        if ($this->filled('work_time')){
-            $logged->setWorkTime($this->work_time);
+        if ($this->filled('open_time')){
+            $logged->setOpenTime(Carbon::parse($this->open_time)->format('H:i a'));
+        }
+        if ($this->filled('close_time')){
+            $logged->setCloseTime(Carbon::parse($this->close_time)->format('H:i a'));
         }
         if ($this->filled('app_locale')){
             $logged->setAppLocale($this->app_locale);

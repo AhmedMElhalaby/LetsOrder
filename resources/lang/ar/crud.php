@@ -149,4 +149,12 @@ return [
         'image' => 'الصورة',
         'is_active' => 'الحالة',
     ],
+    'City'=>[
+        'crud_names' => 'المدن',
+        'crud_name' => 'مدينة',
+        'crud_the_name' => 'المدينة',
+        'name' => 'الاسم',
+        'name_ar' => 'الاسم عربي',
+        'is_active' => 'الحالة',
+    ],
 ];

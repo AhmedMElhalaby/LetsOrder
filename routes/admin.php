@@ -152,6 +152,18 @@ Route::group([
             Route::delete('/{category}','CategoryController@destroy');
             Route::get('/option/export','CategoryController@export');
         });
+        Route::group([
+            'prefix'=>'cities'
+        ],function () {
+            Route::get('/','CityController@index');
+            Route::get('/create','CityController@create');
+            Route::post('/','CityController@store');
+            Route::get('/{city}','CityController@show');
+            Route::get('/{city}/edit','CityController@edit');
+            Route::put('/{city}','CityController@update');
+            Route::delete('/{city}','CityController@destroy');
+            Route::get('/option/export','CityController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------

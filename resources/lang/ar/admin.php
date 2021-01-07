@@ -20,6 +20,7 @@ return [
         'app_auctions'=>'مزادات التطبيق',
         'app_data'=>'بيانات التطبيق',
         'admins'=>'المدراء',
+        'cities'=>'المدن',
         'settings'=>'الإعدادات',
         'faqs'=>'الأسئلة الشائعة',
         'subscriptions'=>'الإشتراكات',

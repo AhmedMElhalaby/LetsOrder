@@ -80,6 +80,14 @@
                     </a>
                 </li>
             @endif
+            @if (auth('admin')->user()->can('Cities'))
+                <li class="nav-item @if(strpos(url()->current() , url('app_data/cities'))===0) active @endif">
+                    <a href="{{url('app_data/cities')}}" class="nav-link">
+                        <i class="material-icons">location_city</i>
+                        <p>{{__('admin.sidebar.cities')}}</p>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </li>

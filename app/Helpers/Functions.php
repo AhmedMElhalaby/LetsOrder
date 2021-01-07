@@ -257,43 +257,25 @@ class Functions
             }
         }
     }
-    public static function AuctionStatusEvent(){
-        $WTB = Auction::where('status',Constant::AUCTION_STATUS['WaitingStart'])->where('start_at','<',Carbon::now())->get();
-        foreach ($WTB as $item){
-            $item->setStatus(Constant::AUCTION_STATUS['BidingTime']);
-            $item->save();
-            $Followers = Favourite::where('auction_id',$item->getId())->pluck('user_id');
-            $Users = User::whereIn('id',$Followers)->get();
-            if(count($Users)){
-                $BidingTime = Setting::where('key','BidingTime')->first();
-                foreach ($Users as $user){
-                    Functions::SendNotification($user,$BidingTime->getName(),$BidingTime->getValue(),$BidingTime->getNameAr(),$BidingTime->getValueAr(),$item->getId(),Constant::NOTIFICATION_TYPE['Auction'],true);
-                }
-            }
-        }
-        $BTW = Auction::where('status',Constant::AUCTION_STATUS['BidingTime'])->where('end_at','<',Carbon::now())->get();
-        foreach ($BTW as $item) {
-            if($item->bids()->count()>0){
-                $item->setStatus(Constant::AUCTION_STATUS['WaitingSupplierApproval']);
-            }else{
-                $item->setStatus(Constant::AUCTION_STATUS['FinishedWithoutAnyBid']);
-            }
-            $item->save();
 
-            $Followers = Favourite::where('auction_id',$item->getId())->pluck('user_id');
-            $Users = User::whereIn('id',$Followers)->get();
-            if(count($Users)){
-                $AuctionFinished = Setting::where('key','AuctionFinished')->first();
-                foreach ($Users as $user){
-                    Functions::SendNotification($user,$AuctionFinished->getName(),$AuctionFinished->getValue(),$AuctionFinished->getNameAr(),$AuctionFinished->getValueAr(),$item->getId(),Constant::NOTIFICATION_TYPE['Auction'],true);
-                }
-            }
-            $Bid = $item->bids()->where('status',Constant::BIDS_STATUSES['Best'])->first();
-            if($Bid){
-                $WaitingSupplierApproval = Setting::where('key','WaitingSupplierApproval')->first();
-                Functions::SendNotification($Bid->user,$WaitingSupplierApproval->getName(),$WaitingSupplierApproval->getValue(),$WaitingSupplierApproval->getNameAr(),$WaitingSupplierApproval->getValueAr(),$item->getId(),Constant::NOTIFICATION_TYPE['Auction'],true);
+    public static function distance($lat1, $lon1, $lat2, $lon2, $unit) {
+        if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+            return 0;
+        }
+        else {
+            $theta = $lon1 - $lon2;
+            $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+            $dist = acos($dist);
+            $dist = rad2deg($dist);
+            $miles = $dist * 60 * 1.1515;
+            $unit = strtoupper($unit);
+            if ($unit == "K") {
+                return ($miles * 1.609344);
+            } else if ($unit == "N") {
+                return ($miles * 0.8684);
+            } else {
+                return $miles;
             }
         }
     }
-
 }
