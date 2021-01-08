@@ -29,8 +29,6 @@ class ShowRequest extends ApiRequest
 
     public function persist(): JsonResponse
     {
-        $Object = (new Order())->find($this->order_id);
-        $Object = new OrderResource($Object);
-        return $this->successJsonResponse([],$Object,'Order',$Object);
+        return $this->successJsonResponse([],new OrderResource((new Order())->find($this->order_id)),'Order');
     }
 }
