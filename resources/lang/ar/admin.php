@@ -21,6 +21,7 @@ return [
         'app_data'=>'بيانات التطبيق',
         'admins'=>'المدراء',
         'cities'=>'المدن',
+        'advertisements'=>'الإعلانات',
         'settings'=>'الإعدادات',
         'faqs'=>'الأسئلة الشائعة',
         'subscriptions'=>'الإشتراكات',

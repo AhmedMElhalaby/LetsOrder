@@ -98,6 +98,12 @@ return [
         'gained_balance' => 'Gained Balance',
         'price' => 'Price',
         'is_active' => 'Status',
+        'Types'=>[
+            ''.Constant::SUBSCRIPTION_TYPES['Monthly']=>'Monthly',
+            ''.Constant::SUBSCRIPTION_TYPES['Quarterly']=>'Quarterly',
+            ''.Constant::SUBSCRIPTION_TYPES['SemiAnnually']=>'Semi Annually',
+            ''.Constant::SUBSCRIPTION_TYPES['Annually']=>'Annually',
+        ],
     ],
     'UserSubscription'=>[
         'crud_names' => 'Subscriptions',
@@ -158,5 +164,19 @@ return [
         'name' => 'Name',
         'name_ar' => 'Name Ar',
         'is_active' => 'Status',
+    ],
+    'Advertisement'=>[
+        'crud_names' => 'Advertisements',
+        'crud_name' => 'Advertisement',
+        'crud_the_name' => 'The Advertisement',
+        'provider_id' => 'Provider',
+        'image' => 'Image',
+        'url' => 'Url',
+        'type' => 'Type',
+        'is_active' => 'Status',
+        'Types'=>[
+            ''.Constant::ADVERTISEMENT_TYPE['Inside']=>'Inside App',
+            ''.Constant::ADVERTISEMENT_TYPE['Outside']=>'Outside App',
+        ]
     ],
 ];

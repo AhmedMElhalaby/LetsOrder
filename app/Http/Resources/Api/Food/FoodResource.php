@@ -27,7 +27,7 @@ class FoodResource extends JsonResource
         $Objects['price'] = $this->getPrice();
         $Objects['size'] = $this->getSize();
         $Objects['is_active'] = $this->isIsActive();
-        $Object['rate'] = 0;
+        $Objects['rate'] = $this->review()->avg('rate');
         $Objects['Media'] = MediaResource::collection($this->media);
         return $Objects;
     }

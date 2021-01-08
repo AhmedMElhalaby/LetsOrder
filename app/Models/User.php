@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Helpers\Constant;
 use App\Helpers\Functions;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +43,14 @@ class User extends Authenticatable
 
     public function city(){
         return $this->belongsTo(City::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function review(): HasMany
+    {
+        return $this->hasMany(Review::class,'ref_id')->where('type',Constant::REVIEW_TYPE['Provider']);
     }
 //    protected static function boot()
 //    {

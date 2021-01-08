@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Helpers\Constant;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer id
@@ -21,14 +23,21 @@ class Food extends Model
     protected $table = 'foods';
     protected $fillable = ['user_id','category_id','name','description','price','size','is_active'];
 
-    public function user(){
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
-    public function category(){
+    public function category():BelongsTo
+    {
         return $this->belongsTo(Category::class);
     }
-    public function media(){
+    public function media(): HasMany
+    {
         return $this->hasMany(Media::class,'ref_id')->where('media_type',Constant::MEDIA_TYPES['Food']);
+    }
+    public function review(): HasMany
+    {
+        return $this->hasMany(Review::class,'ref_id')->where('type',Constant::REVIEW_TYPE['Food']);
     }
     /**
      * @return int

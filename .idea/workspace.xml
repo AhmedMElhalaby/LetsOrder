@@ -2,23 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37104201-ca9c-4a86-a967-a68fef73ab71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/CityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/ProviderRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/CityResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/ProviderResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/City.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_07_202331_create_cities_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/AdvertisementController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/OrderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FavouriteRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FavouriteToggleRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/CheckCouponRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/IndexRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/ReviewRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/ShowRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/StoreRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/UpdateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/AdvertisementResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Order/OrderFoodResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Order/OrderResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Order/OrderStatusResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Advertisement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CouponHistory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/OrderFood.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/OrderStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Review.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_084407_create_orders_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_090950_create_orders_foods_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_090959_create_orders_statuses_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_093327_create_reviews_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_093650_create_advertisements_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_132651_create_coupons_history_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_08_160852_create_favourites_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/base/fields/url.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Constant.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/SubscriptionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/RegistrationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/RegistrationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/UserRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Home/InstallRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/InstallRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/UserResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/User/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/User/UserResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Food/FoodResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Food/FoodResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/ProviderResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/ProviderResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/SubscriptionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/SubscriptionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Favourite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Favourite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Food.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Food.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/InstallSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/InstallSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/AhmedPanelTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/AhmedPanelTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_02_082115_create_subscriptions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_02_082115_create_subscriptions_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/crud.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/admin.php" afterDir="false" />
@@ -191,7 +217,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Resources/Api/Home" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Api/Home" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -203,10 +229,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\localhost\LetsOrder\app\Http\Resources\Api\Home" />
-      <recent name="D:\localhost\LetsOrder\app\Http\Controllers\Admin\AppData" />
-      <recent name="D:\localhost\LetsOrder\app\Models" />
       <recent name="D:\localhost\LetsOrder\app\Http\Requests\Api\Home" />
+      <recent name="D:\localhost\LetsOrder\app\Models" />
+      <recent name="D:\localhost\LetsOrder\app\Http\Resources\Api\Order" />
+      <recent name="D:\localhost\LetsOrder\app\Http\Requests\Api\Order" />
+      <recent name="D:\localhost\LetsOrder\app\Http\Requests\Api" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -220,7 +247,8 @@
       <workItem from="1609996907116" duration="4498000" />
       <workItem from="1610038788493" duration="172000" />
       <workItem from="1610042706466" duration="188000" />
-      <workItem from="1610045861003" duration="4766000" />
+      <workItem from="1610045861003" duration="5421000" />
+      <workItem from="1610089270162" duration="25940000" />
     </task>
     <servers />
   </component>

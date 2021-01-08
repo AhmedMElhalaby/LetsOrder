@@ -164,6 +164,18 @@ Route::group([
             Route::delete('/{city}','CityController@destroy');
             Route::get('/option/export','CityController@export');
         });
+        Route::group([
+            'prefix'=>'advertisements'
+        ],function () {
+            Route::get('/','AdvertisementController@index');
+            Route::get('/create','AdvertisementController@create');
+            Route::post('/','AdvertisementController@store');
+            Route::get('/{city}','AdvertisementController@show');
+            Route::get('/{city}/edit','AdvertisementController@edit');
+            Route::put('/{city}','AdvertisementController@update');
+            Route::delete('/{city}','AdvertisementController@destroy');
+            Route::get('/option/export','AdvertisementController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------

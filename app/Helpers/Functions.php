@@ -6,6 +6,8 @@ namespace App\Helpers;
 
 use App\Models\Auction;
 use App\Models\Bid;
+use App\Models\Coupon;
+use App\Models\CouponHistory;
 use App\Models\Favourite;
 use App\Models\Notification;
 use App\Models\PasswordReset;
@@ -276,6 +278,16 @@ class Functions
             } else {
                 return $miles;
             }
+        }
+    }
+    public static function check_coupon($Object){
+        $CouponHistory = CouponHistory::where('coupon_id',$Object->getId())->where('user_id',auth()->user()->getId())->count();
+        $coupon_date = Carbon::parse($Object->getExpireAt());
+        if ($coupon_date >= Carbon::now()) {
+            return ResponseTrait::failJsonResponse([__('messages.offer_expired')]);
+        }
+        if ($CouponHistory >= $Object->getMaxUseTimes()) {
+            return ResponseTrait::failJsonResponse([__('messages.you_cannot_do_it_at_this_time')]);
         }
     }
 }

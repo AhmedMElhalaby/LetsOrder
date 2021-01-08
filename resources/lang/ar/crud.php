@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Helpers\Constant;
+
 return [
 
     'Admin'=>[
@@ -97,6 +99,12 @@ return [
         'gained_balance' => 'الرصيد المتاح',
         'price' => 'السعر',
         'is_active' => 'الحالة',
+        'Types'=>[
+            ''.Constant::SUBSCRIPTION_TYPES['Monthly']=>'شهري',
+            ''.Constant::SUBSCRIPTION_TYPES['Quarterly']=>'ربع سنوي',
+            ''.Constant::SUBSCRIPTION_TYPES['SemiAnnually']=>'نصف سنوي',
+            ''.Constant::SUBSCRIPTION_TYPES['Annually']=>'سنوي',
+        ],
     ],
     'UserSubscription'=>[
         'crud_names' => 'الاشتراكات',
@@ -156,5 +164,19 @@ return [
         'name' => 'الاسم',
         'name_ar' => 'الاسم عربي',
         'is_active' => 'الحالة',
+    ],
+    'Advertisement'=>[
+        'crud_names' => 'الإعلانات',
+        'crud_name' => 'إعلان',
+        'crud_the_name' => 'الإعلان',
+        'provider_id' => 'المزود',
+        'image' => 'الصورة',
+        'url' => 'الرابط',
+        'type' => 'النوع',
+        'is_active' => 'الحالة',
+        'Types'=>[
+            ''.Constant::ADVERTISEMENT_TYPE['Inside']=>'داخل التطبيق',
+            ''.Constant::ADVERTISEMENT_TYPE['Outside']=>'خارج التطبيق',
+        ]
     ],
 ];

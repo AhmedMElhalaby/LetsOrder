@@ -88,6 +88,14 @@
                     </a>
                 </li>
             @endif
+            @if (auth('admin')->user()->can('Advertisements'))
+                <li class="nav-item @if(strpos(url()->current() , url('app_data/advertisements'))===0) active @endif">
+                    <a href="{{url('app_data/advertisements')}}" class="nav-link">
+                        <i class="material-icons">font_download</i>
+                        <p>{{__('admin.sidebar.advertisements')}}</p>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </li>

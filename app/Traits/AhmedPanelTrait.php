@@ -363,6 +363,9 @@ trait AhmedPanelTrait
             case 'boolean':
                 return view('AhmedPanel.base.fields.boolean',compact('Field','value','lang'));
                 break;
+            case 'url':
+                return view('AhmedPanel.base.fields.url',compact('Field','value','lang'));
+                break;
             case 'select':
                 return view('AhmedPanel.base.fields.select',compact('Field','value','lang'));
                 break;
@@ -439,6 +442,9 @@ trait AhmedPanelTrait
                     $text .= '|unique:' . $this->getTable().','. $field['name'].','.$ref_id;
                 else
                     $text .= '|unique:' . $this->getTable();
+            }
+            if(isset($field['custom_rule'])){
+                $text .= '|' . $field['custom_rule'];
             }
             $rules[$field['name']] =$text;
         }

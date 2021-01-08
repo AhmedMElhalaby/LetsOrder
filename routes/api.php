@@ -81,6 +81,15 @@ Route::group([
         Route::post('update','CouponController@update');
         Route::post('destroy','CouponController@destroy');
     });
+    Route::group([
+        'prefix' => 'orders',
+    ], function() {
+        Route::get('/','OrderController@index');
+        Route::get('show','OrderController@show');
+        Route::post('store','OrderController@store');
+        Route::post('update','OrderController@update');
+        Route::get('check_coupon','OrderController@check_coupon');
+    });
 });
 
 Route::group([
@@ -93,6 +102,9 @@ Route::group([
         Route::get('providers','HomeController@providers');
         Route::post('subscribe','HomeController@subscribe');
         Route::post('send_notification','HomeController@send_notification');
+        Route::get('favourites','HomeController@favourites');
+        Route::post('favourite_toggle','HomeController@favourite_toggle');
+
     });
 });
 

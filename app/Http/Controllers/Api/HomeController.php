@@ -7,6 +7,8 @@ use App\Http\Requests\Api\Home\SendNotificationRequest;
 use App\Http\Requests\Api\Home\InstallRequest;
 use App\Http\Requests\Api\Home\ProviderRequest;
 use App\Http\Requests\Api\Home\SubscribeRequest;
+use App\Http\Requests\Api\Home\FavouriteToggleRequest;
+use App\Http\Requests\Api\Home\FavouriteRequest;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 
@@ -43,6 +45,22 @@ class HomeController extends Controller
      * @return JsonResponse
      */
     public function send_notification(SendNotificationRequest $request): JsonResponse
+    {
+        return $request->persist();
+    }
+    /**
+     * @param FavouriteToggleRequest $request
+     * @return JsonResponse
+     */
+    public function favourite_toggle(FavouriteToggleRequest $request): JsonResponse
+    {
+        return $request->persist();
+    }
+    /**
+     * @param FavouriteRequest $request
+     * @return JsonResponse
+     */
+    public function favourites(FavouriteRequest $request): JsonResponse
     {
         return $request->persist();
     }

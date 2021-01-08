@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string description
  * @property string name_ar
  * @property string description_ar
- * @property string gained_balance
+ * @property string type
  * @property string price
  * @property boolean is_active
  * @method Subscription find(int $id)
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
     protected $table = 'subscriptions';
-    protected $fillable = ['name','description','name_ar','description_ar','gained_balance','price','is_active'];
+    protected $fillable = ['name','description','name_ar','description_ar','type','price','is_active'];
 
     /**
      * @return int
@@ -104,17 +104,17 @@ class Subscription extends Model
     /**
      * @return string
      */
-    public function getGainedBalance(): string
+    public function getType(): string
     {
-        return $this->gained_balance;
+        return $this->type;
     }
 
     /**
-     * @param string $gained_balance
+     * @param string $type
      */
-    public function setGainedBalance(string $gained_balance): void
+    public function setType(string $type): void
     {
-        $this->gained_balance = $gained_balance;
+        $this->type = $type;
     }
 
     /**

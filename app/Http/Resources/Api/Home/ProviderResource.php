@@ -29,15 +29,17 @@ class ProviderResource extends JsonResource
         $Object['bio'] = $this->getBio();
         $Object['open_time'] = $this->getOpenTime();
         $Object['close_time'] = $this->getCloseTime();
-        $startTime = Carbon::parse($this->getOpenTime())->format('H:i a');
-        $endTime = Carbon::parse($this->getCloseTime())->format('H:i a');
-        $currentTime = Carbon::now();
-        if($currentTime->between($startTime, $endTime, true)){
-            $Object['is_open'] = true;
-        }else{
-            $Object['is_open'] = false;
+        $Objects['rate'] = $this->review()->avg('rate');
+        if($this->getOpenTime() &&$this->getCloseTime()){
+            $startTime = Carbon::parse($this->getOpenTime())->format('H:i');
+            $endTime = Carbon::parse($this->getCloseTime())->format('H:i');
+            $currentTime = Carbon::now();
+            if($currentTime->between($startTime, $endTime, true)){
+                $Object['is_open'] = true;
+            }else{
+                $Object['is_open'] = false;
+            }
         }
-        $Object['rate'] = 0;
         $Object['distance'] = Functions::distance($this->getLat(),$this->getLng(),auth('api')->user()->getLat(),auth('api')->user()->getLng(),"K");
         return $Object;
     }
