@@ -40,7 +40,7 @@ class ProviderResource extends JsonResource
                 $Object['is_open'] = false;
             }
         }
-        $Object['distance'] = Functions::distance($this->getLat(),$this->getLng(),auth('api')->user()->getLat(),auth('api')->user()->getLng(),"K");
+        $Object['distance'] = round(Functions::distance($this->getLat(),$this->getLng(),auth('api')->user()->getLat(),auth('api')->user()->getLng(),"K"),1);
         return $Object;
     }
 
