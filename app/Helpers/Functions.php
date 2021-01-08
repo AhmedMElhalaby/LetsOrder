@@ -280,14 +280,15 @@ class Functions
             }
         }
     }
-    public function check_coupon($Object){
+    public static function check_coupon($Object){
         $CouponHistory = CouponHistory::where('coupon_id',$Object->getId())->where('user_id',auth()->user()->getId())->count();
         $coupon_date = Carbon::parse($Object->getExpireAt())->format('Y-m-d');
         if ($coupon_date >= Carbon::today()->format('Y-m-d')) {
-            return $this->failJsonResponse([__('messages.offer_expired')]);
+            return __('messages.offer_expired');
         }
         if ($CouponHistory >= $Object->getMaxUseTimes()) {
-            return $this->failJsonResponse([__('messages.you_cannot_do_it_at_this_time')]);
+            return __('messages.you_cannot_do_it_at_this_time');
         }
+        return '';
     }
 }

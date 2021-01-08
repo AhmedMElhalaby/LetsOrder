@@ -64,7 +64,10 @@ class StoreRequest extends ApiRequest
             if (!$Coupon) {
                 return $this->failJsonResponse([__('messages.coupon_not_found')]);
             }
-            (new \App\Helpers\Functions)->check_coupon($Coupon);
+            $msg = Functions::check_coupon($Coupon);
+            if ($msg != '') {
+                return $this->failJsonResponse([$msg]);
+            }
             $discount = $amount * $Coupon->getValue() /100;
         }
         $Object = new Order();

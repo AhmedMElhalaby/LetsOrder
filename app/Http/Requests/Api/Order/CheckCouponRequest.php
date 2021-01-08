@@ -40,7 +40,10 @@ class CheckCouponRequest extends ApiRequest
         if (!$Object) {
             return $this->failJsonResponse([__('messages.coupon_not_found')]);
         }
-        (new \App\Helpers\Functions)->check_coupon($Object);
+        $msg = Functions::check_coupon($Object);
+        if ($msg != '') {
+            return $this->failJsonResponse([$msg]);
+        }
         return $this->successJsonResponse([],new CouponResource($Object),'Coupon');
     }
 }
