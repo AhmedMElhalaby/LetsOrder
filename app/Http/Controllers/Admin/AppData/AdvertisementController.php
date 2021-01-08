@@ -24,7 +24,7 @@ class AdvertisementController extends Controller
                 'name'=>'provider_id',
                 'type'=>'custom_relation',
                 'relation'=>[
-                    'data'=> User::all(),
+                    'data'=> User::where('type',Constant::USER_TYPE['Provider'])->get(),
                     'custom'=>function($Object){
                         return ($Object)?$Object->name:'';
                     },
@@ -61,7 +61,7 @@ class AdvertisementController extends Controller
                 'name'=>'provider_id',
                 'type'=>'custom_relation',
                 'relation'=>[
-                    'data'=> User::all(),
+                    'data'=> User::where('type',Constant::USER_TYPE['Provider'])->get(),
                     'custom'=>function($Object){
                         return ($Object)?$Object->name:'';
                     },
