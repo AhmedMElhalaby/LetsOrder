@@ -9,19 +9,13 @@ use App\Traits\ResponseTrait;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @property mixed code
+ */
 class CheckResetCodeRequest extends ApiRequest
 {
     use ResponseTrait;
 
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -43,7 +37,7 @@ class CheckResetCodeRequest extends ApiRequest
     {
         $user = User::where('email',$this->email)->first();
         $passwordReset = PasswordReset::where('user_id',$user->getId())->first();
-        if($passwordReset->code == $this->code){
+        if($passwordReset &&$passwordReset->code == $this->code){
             return $this->successJsonResponse( [__('auth.code_correct')]);
         }
         else{
