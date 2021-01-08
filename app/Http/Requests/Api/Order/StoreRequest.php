@@ -36,7 +36,7 @@ class StoreRequest extends ApiRequest
     {
         return [
             'delivered_date'=>'sometimes|date_format:Y-m-d H:i:s',
-            'code'=>'sometimes|exists:coupons,code',
+            'code'=>'sometimes|string',
             'foods'=>'required|array',
             'foods.*.food_id'=>'required|exists:foods,id',
             'foods.*.quantity'=>'required|numeric',
@@ -69,7 +69,7 @@ class StoreRequest extends ApiRequest
         }
         $Object = new Order();
         $Object->setUserId(auth()->user()->getId());
-        $Object->setProviderId($this->provider_id);
+        $Object->setProviderId($provider_id);
         $Object->setAmount($amount);
         $Object->setDiscountAmount($discount);
         $Object->setOrderDate(Carbon::today());

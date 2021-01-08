@@ -30,7 +30,7 @@ class OrderResource extends JsonResource
         $Objects['reject_reason'] = $this->getRejectReason();
         $Objects['cancel_reason'] = $this->getCancelReason();
         $Objects['is_finished'] = $this->isIsFinished();
-        $Objects['rate'] = $this->review()->avg('rate');
+        $Objects['rate'] = $this->review()->avg('rate')??0;
         $Objects['status'] = $this->getStatus();
         $Objects['OrderFoods'] = OrderFoodResource::collection($this->order_foods);
         $Objects['OrderStatuses'] = OrderStatusResource::collection($this->order_statuses);
