@@ -97,6 +97,7 @@ return [
         'description_ar' => 'Description Ar',
         'gained_balance' => 'Gained Balance',
         'price' => 'Price',
+        'type' => 'Type',
         'is_active' => 'Status',
         'Types'=>[
             ''.Constant::SUBSCRIPTION_TYPES['Monthly']=>'Monthly',
@@ -177,6 +178,23 @@ return [
         'Types'=>[
             ''.Constant::ADVERTISEMENT_TYPE['Inside']=>'Inside App',
             ''.Constant::ADVERTISEMENT_TYPE['Outside']=>'Outside App',
+        ]
+    ],
+    'Order'=>[
+        'crud_names' => 'Orders',
+        'crud_name' => 'Order',
+        'crud_the_name' => 'The Order',
+        'user_id' => 'User',
+        'provider_id' => 'Provider',
+        'order_date' => 'Order Date',
+        'status' => 'Status',
+        'Statuses'=>[
+            ''.Constant::ORDER_STATUSES['PendingApproval']=>'Pending Approval',
+            ''.Constant::ORDER_STATUSES['Approved']=>'Approved',
+            ''.Constant::ORDER_STATUSES['Rejected']=>'Rejected',
+            ''.Constant::ORDER_STATUSES['Canceled']=>'Canceled',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'Not Delivered',
+            ''.Constant::ORDER_STATUSES['NotReceived']=>'Not Received',
         ]
     ],
 ];

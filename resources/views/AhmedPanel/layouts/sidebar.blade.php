@@ -64,14 +64,14 @@
                     </a>
                 </li>
             @endif
-{{--            @if (auth('admin')->user()->can('Subscriptions'))--}}
-{{--                <li class="nav-item @if(strpos(url()->current() , url('app_data/subscriptions'))===0) active @endif">--}}
-{{--                    <a href="{{url('app_data/subscriptions')}}" class="nav-link">--}}
-{{--                        <i class="material-icons">confirmation_number</i>--}}
-{{--                        <p>{{__('admin.sidebar.subscriptions')}}</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--            @endif--}}
+            @if (auth('admin')->user()->can('Subscriptions'))
+                <li class="nav-item @if(strpos(url()->current() , url('app_data/subscriptions'))===0) active @endif">
+                    <a href="{{url('app_data/subscriptions')}}" class="nav-link">
+                        <i class="material-icons">confirmation_number</i>
+                        <p>{{__('admin.sidebar.subscriptions')}}</p>
+                    </a>
+                </li>
+            @endif
             @if (auth('admin')->user()->can('Categories'))
                 <li class="nav-item @if(strpos(url()->current() , url('app_data/categories'))===0) active @endif">
                     <a href="{{url('app_data/categories')}}" class="nav-link">
@@ -88,11 +88,31 @@
                     </a>
                 </li>
             @endif
+        </ul>
+    </div>
+</li>
+@endif
+@if (auth('admin')->user()->can('Advertisements')|| auth('admin')->user()->can('Orders'))
+<li class="nav-item ">
+    <a class="nav-link collapsed" data-toggle="collapse" href="#app_content" aria-expanded="false">
+        <i class="material-icons">keyboard_arrow_down</i>
+        <p> {{__('admin.sidebar.app_content')}}</p>
+    </a>
+    <div class="collapse @if(strpos(url()->current() , url('app_content'))===0) in @endif" id="app_content" @if(strpos(url()->current() , url('app_content'))===0) aria-expanded="true" @endif>
+        <ul class="nav">
             @if (auth('admin')->user()->can('Advertisements'))
-                <li class="nav-item @if(strpos(url()->current() , url('app_data/advertisements'))===0) active @endif">
-                    <a href="{{url('app_data/advertisements')}}" class="nav-link">
+                <li class="nav-item @if(strpos(url()->current() , url('app_content/advertisements'))===0) active @endif">
+                    <a href="{{url('app_content/advertisements')}}" class="nav-link">
                         <i class="material-icons">font_download</i>
                         <p>{{__('admin.sidebar.advertisements')}}</p>
+                    </a>
+                </li>
+            @endif
+            @if (auth('admin')->user()->can('Orders'))
+                <li class="nav-item @if(strpos(url()->current() , url('app_content/orders'))===0) active @endif">
+                    <a href="{{url('app_content/orders')}}" class="nav-link">
+                        <i class="material-icons">view_module</i>
+                        <p>{{__('admin.sidebar.orders')}}</p>
                     </a>
                 </li>
             @endif

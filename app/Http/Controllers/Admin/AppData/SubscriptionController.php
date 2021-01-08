@@ -48,10 +48,10 @@ class SubscriptionController extends Controller
                 'name'=>'type',
                 'type'=>'select',
                 'data'=>[
-                    Constant::SUBSCRIPTION_TYPES['Monthly'] =>__('crud.Subscription.Types.'.Constant::ADVERTISEMENT_TYPE['Monthly'],[],session('my_locale')),
-                    Constant::SUBSCRIPTION_TYPES['Quarterly'] =>__('crud.Subscription.Types.'.Constant::ADVERTISEMENT_TYPE['Quarterly'],[],session('my_locale')),
-                    Constant::SUBSCRIPTION_TYPES['SemiAnnually'] =>__('crud.Subscription.Types.'.Constant::ADVERTISEMENT_TYPE['SemiAnnually'],[],session('my_locale')),
-                    Constant::SUBSCRIPTION_TYPES['Annually'] =>__('crud.Subscription.Types.'.Constant::ADVERTISEMENT_TYPE['Annually'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['Monthly'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['Monthly'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['Quarterly'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['Quarterly'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['SemiAnnually'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['SemiAnnually'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['Annually'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['Annually'],[],session('my_locale')),
                 ],
                 'is_searchable'=>true,
                 'order'=>true
@@ -89,9 +89,15 @@ class SubscriptionController extends Controller
                 'type'=>'text',
                 'is_required'=>true
             ],
-            'gained_balance'=> [
-                'name'=>'gained_balance',
-                'type'=>'number',
+            'type'=> [
+                'name'=>'type',
+                'type'=>'select',
+                'data'=>[
+                    Constant::SUBSCRIPTION_TYPES['Monthly'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['Monthly'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['Quarterly'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['Quarterly'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['SemiAnnually'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['SemiAnnually'],[],session('my_locale')),
+                    Constant::SUBSCRIPTION_TYPES['Annually'] =>__('crud.Subscription.Types.'.Constant::SUBSCRIPTION_TYPES['Annually'],[],session('my_locale')),
+                ],
                 'is_required'=>true
             ],
             'is_active'=> [

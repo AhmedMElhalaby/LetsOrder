@@ -164,17 +164,40 @@ Route::group([
             Route::delete('/{city}','CityController@destroy');
             Route::get('/option/export','CityController@export');
         });
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Admin > App
+    |--------------------------------------------------------------------------
+    | Here is where App Content routes
+    */
+    Route::group([
+        'prefix'=>'app_content',
+        'namespace'=>'AppContent',
+    ],function () {
         Route::group([
             'prefix'=>'advertisements'
         ],function () {
             Route::get('/','AdvertisementController@index');
             Route::get('/create','AdvertisementController@create');
             Route::post('/','AdvertisementController@store');
-            Route::get('/{city}','AdvertisementController@show');
-            Route::get('/{city}/edit','AdvertisementController@edit');
-            Route::put('/{city}','AdvertisementController@update');
-            Route::delete('/{city}','AdvertisementController@destroy');
+            Route::get('/{advertisement}','AdvertisementController@show');
+            Route::get('/{advertisement}/edit','AdvertisementController@edit');
+            Route::put('/{advertisement}','AdvertisementController@update');
+            Route::delete('/{advertisement}','AdvertisementController@destroy');
             Route::get('/option/export','AdvertisementController@export');
+        });
+        Route::group([
+            'prefix'=>'orders'
+        ],function () {
+            Route::get('/','OrderController@index');
+            Route::get('/create','OrderController@create');
+            Route::post('/','OrderController@store');
+            Route::get('/{order}','OrderController@show');
+            Route::get('/{order}/edit','OrderController@edit');
+            Route::put('/{order}','OrderController@update');
+            Route::delete('/{order}','OrderController@destroy');
+            Route::get('/option/export','OrderController@export');
         });
     });
     /*

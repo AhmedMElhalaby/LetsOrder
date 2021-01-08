@@ -98,6 +98,7 @@ return [
         'description_ar' => 'الوصف عربي',
         'gained_balance' => 'الرصيد المتاح',
         'price' => 'السعر',
+        'type' => 'النوع',
         'is_active' => 'الحالة',
         'Types'=>[
             ''.Constant::SUBSCRIPTION_TYPES['Monthly']=>'شهري',
@@ -177,6 +178,23 @@ return [
         'Types'=>[
             ''.Constant::ADVERTISEMENT_TYPE['Inside']=>'داخل التطبيق',
             ''.Constant::ADVERTISEMENT_TYPE['Outside']=>'خارج التطبيق',
+        ]
+    ],
+    'Order'=>[
+        'crud_names' => 'الطلبات',
+        'crud_name' => 'طلب',
+        'crud_the_name' => 'الطلب',
+        'user_id' => 'المستخدم',
+        'provider_id' => 'المزود',
+        'order_date' => 'تاريخ الطلب',
+        'status' => 'الحالة',
+        'Statuses'=>[
+            ''.Constant::ORDER_STATUSES['PendingApproval']=>'بإنتظار الموافقة',
+            ''.Constant::ORDER_STATUSES['Approved']=>'تمت الموافقة',
+            ''.Constant::ORDER_STATUSES['Rejected']=>'مرفوض',
+            ''.Constant::ORDER_STATUSES['Canceled']=>'ملغي',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'لم يتم التسليم',
+            ''.Constant::ORDER_STATUSES['NotReceived']=>'لم يتم الاستلام',
         ]
     ],
 ];
