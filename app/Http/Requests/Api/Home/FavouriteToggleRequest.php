@@ -11,6 +11,7 @@ use App\Http\Resources\Api\Home\SubscriptionResource;
 use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Favourite;
+use App\Models\Food;
 use App\Models\Setting;
 use App\Models\Subscription;
 use App\Models\User;
@@ -43,6 +44,12 @@ class FavouriteToggleRequest extends ApiRequest
         if ($Object) {
             $Object->delete();
         }else{
+            if($this->type == Constant::FAVOURITE_TYPE['Provider'] && !((new User)->find($this->ref_id))){
+                return $this->successJsonResponse([__('messages.object_not_found')]);
+            }
+            if($this->type == Constant::FAVOURITE_TYPE['Food'] && !((new Food())->find($this->ref_id))){
+                return $this->successJsonResponse([__('messages.object_not_found')]);
+            }
             $Object = new Favourite();
             $Object->setUserId(auth()->user()->getId());
             $Object->setType($this->type);
