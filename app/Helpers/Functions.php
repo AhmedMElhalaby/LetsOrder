@@ -282,8 +282,8 @@ class Functions
     }
     public static function check_coupon($Object){
         $CouponHistory = CouponHistory::where('coupon_id',$Object->getId())->where('user_id',auth()->user()->getId())->count();
-        $coupon_date = Carbon::parse($Object->getExpireAt());
-        if ($coupon_date >= Carbon::now()) {
+        $coupon_date = Carbon::parse($Object->getExpireAt())->format('Y-m-d');
+        if ($coupon_date >= Carbon::today()->format('Y-m-d')) {
             return ResponseTrait::failJsonResponse([__('messages.offer_expired')]);
         }
         if ($CouponHistory >= $Object->getMaxUseTimes()) {
