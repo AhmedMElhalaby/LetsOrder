@@ -25,6 +25,7 @@ Route::group([
         'middleware' => 'auth:api'
     ], function() {
         Route::get('me','AuthController@show');
+        Route::get('provider_profile','AuthController@provider_profile');
         Route::post('refresh','AuthController@refresh');
         Route::post('update','AuthController@update');
         Route::get('resend_verify', 'AuthController@resend_verify');

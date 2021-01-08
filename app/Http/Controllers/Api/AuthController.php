@@ -13,6 +13,7 @@ use App\Http\Requests\Api\Auth\ResendVerifyRequest;
 use App\Http\Requests\Api\Auth\ResetPasswordRequest;
 use App\Http\Requests\Api\Auth\UserRequest;
 use App\Http\Requests\Api\Auth\VerifyForm;
+use App\Http\Resources\Api\Home\ProviderResource;
 use App\Http\Resources\Api\User\UserResource;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -52,6 +53,16 @@ class AuthController extends Controller
     public function show(Request $request): JsonResponse
     {
         return $this->successJsonResponse([],new UserResource($request->user(),$request->bearerToken()),'User');
+    }
+    /**
+     * Show user profile
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function provider_profile(Request $request): JsonResponse
+    {
+        return $this->successJsonResponse([],new ProviderResource($request->user()),'Provider');
     }
 
     /**
