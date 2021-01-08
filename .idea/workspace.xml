@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37104201-ca9c-4a86-a967-a68fef73ab71" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/ProviderResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/ProviderResource.php" afterDir="false" />
-    </list>
+    <list default="true" id="37104201-ca9c-4a86-a967-a68fef73ab71" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +200,7 @@
       <workItem from="1610038788493" duration="172000" />
       <workItem from="1610042706466" duration="188000" />
       <workItem from="1610045861003" duration="5421000" />
-      <workItem from="1610089270162" duration="28439000" />
+      <workItem from="1610089270162" duration="28831000" />
     </task>
     <servers />
   </component>
