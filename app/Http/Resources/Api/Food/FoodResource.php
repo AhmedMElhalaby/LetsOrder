@@ -2,8 +2,7 @@
 
 namespace App\Http\Resources\Api\Food;
 
-use App\Http\Resources\Api\Home\UserResource;
-use App\Models\Category;
+use App\Http\Resources\Api\Home\CategoryResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +20,7 @@ class FoodResource extends JsonResource
         $Objects['id'] = $this->getId();
         $Objects['user_id'] = $this->getUserId();
         $Objects['category_id'] = $this->getCategoryId();
-        $Objects['Category'] = new Category($this->category);
+        $Objects['Category'] = new CategoryResource($this->category);
         $Objects['name'] = $this->getName();
         $Objects['description'] = $this->getDescription();
         $Objects['price'] = $this->getPrice();
