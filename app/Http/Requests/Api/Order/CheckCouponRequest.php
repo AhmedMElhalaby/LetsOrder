@@ -15,6 +15,7 @@ use Illuminate\Http\JsonResponse;
 
 /**
  * @property mixed code
+ * @property mixed provider_id
  */
 class CheckCouponRequest extends ApiRequest
 {
@@ -28,13 +29,17 @@ class CheckCouponRequest extends ApiRequest
     public function rules()
     {
         return [
-            'code'=>'required|exists:coupons,code',
+            'provider_id'=>'required|exists:users,id',
+            'code'=>'required|string',
         ];
     }
 
     public function persist(): JsonResponse
     {
-        $Object = (new Coupon())->where('code',$this->code)->first();
+        $Object = (new Coupon())->where('user_id',$this->provider_id)->where('code',$this->code)->first();
+        if (!$Object) {
+            return $this->failJsonResponse([__('messages.coupon_not_found')]);
+        }
         Functions::check_coupon($Object);
         return $this->successJsonResponse([],new CouponResource($Object),'Coupon');
     }

@@ -54,13 +54,16 @@ class StoreRequest extends ApiRequest
                 $provider_id = $Food->getUserId();
             }else{
                 if ($provider_id != $Food->getUserId()) {
-                    return $this->failJsonResponse([__('messages.you_are_not_allowed')]);
+                    return $this->failJsonResponse([__('messages.you_cannot_add_foods_from_several_provider_at_the_same_time')]);
                 }
             }
             $amount += ($Food->getPrice() * $food['quantity']);
         }
         if ($this->filled('code')) {
-            $Coupon = (new Coupon())->where('code',$this->code)->first();
+            $Coupon = (new Coupon())->where('user_id',$provider_id)->where('code',$this->code)->first();
+            if (!$Coupon) {
+                return $this->failJsonResponse([__('messages.coupon_not_found')]);
+            }
             Functions::check_coupon($Coupon);
             $discount = $amount * $Coupon->getValue() /100;
         }

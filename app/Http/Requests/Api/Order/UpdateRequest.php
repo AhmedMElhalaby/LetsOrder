@@ -7,6 +7,7 @@ use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 
@@ -43,6 +44,7 @@ class UpdateRequest extends ApiRequest
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Approved']);
                 $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Approved']);
                 Functions::SendNotification($Object->user,'Order Approved','Provider Approved your order !','الموافقة على الطلب !','قام المزود بالموافقة على طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
@@ -53,6 +55,7 @@ class UpdateRequest extends ApiRequest
                 $Object->setStatus(Constant::ORDER_STATUSES['Rejected']);
                 $Object->setRejectReason(@$this->reject_reason);
                 $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Rejected']);
                 Functions::SendNotification($Object->user,'Order Rejected','Provider Rejected your order !','الرفض على الطلب !','قام المزود برفض طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
@@ -63,6 +66,7 @@ class UpdateRequest extends ApiRequest
                 $Object->setStatus(Constant::ORDER_STATUSES['Canceled']);
                 $Object->setCancelReason(@$this->cancel_reason);
                 $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Canceled']);
                 Functions::SendNotification($Object->provider,'Order Canceled','Customer Canceled the order !','إلغاء الطلب !','قام المستخدم بإلغاء الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
@@ -72,6 +76,7 @@ class UpdateRequest extends ApiRequest
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['NotReceived']);
                 $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['NotReceived']);
                 Functions::SendNotification($Object->user,'Order Not Received','Customer did not receive the order !','لم يتم استلام الطلب !','لم يقم المستخدم باستلام الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
@@ -81,6 +86,7 @@ class UpdateRequest extends ApiRequest
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['NotDelivered']);
                 $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['NotDelivered']);
                 Functions::SendNotification($Object->provider,'Order Not Delivered','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
@@ -90,6 +96,7 @@ class UpdateRequest extends ApiRequest
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Finished']);
                 $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Finished']);
                 Functions::SendNotification($Object->provider,'Order Not Delivered','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }

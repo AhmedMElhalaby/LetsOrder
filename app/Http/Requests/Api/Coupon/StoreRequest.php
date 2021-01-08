@@ -37,6 +37,10 @@ class StoreRequest extends ApiRequest
 
     public function persist(): JsonResponse
     {
+        $Exists = (new Coupon())->where('user_id',auth()->user()->getId())->where('code',$this->code)->first();
+        if ($Exists) {
+            return $this->failJsonResponse([__('messages.coupon_exists')]);
+        }
         $Object = new Coupon();
         $Object->setUserId(auth()->user()->getId());
         $Object->setCode($this->code);

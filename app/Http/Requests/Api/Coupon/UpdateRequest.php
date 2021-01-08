@@ -42,6 +42,10 @@ class UpdateRequest extends ApiRequest
     {
         $Object = (new Coupon)->find($this->coupon_id);
         if($this->filled('code')){
+            $Exists = (new Coupon())->where('id','!=',$this->coupon_id)->where('user_id',auth()->user()->getId())->where('code',$this->code)->first();
+            if ($Exists) {
+                return $this->failJsonResponse([__('messages.coupon_exists')]);
+            }
             $Object->setCode($this->code);
         }
         if($this->filled('value')){
