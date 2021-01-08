@@ -44,7 +44,7 @@ class ResetPasswordRequest extends ApiRequest
     {
         $user = User::where('email',$this->email)->first();
         $passwordReset = PasswordReset::where('user_id',$user->getId())->first();
-        if($passwordReset->code == $this->code){
+        if($passwordReset && $passwordReset->code == $this->code){
             $user->setPassword($this->password);
             $user->save();
             DB::table('oauth_access_tokens')
