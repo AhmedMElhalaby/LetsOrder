@@ -78,10 +78,10 @@ class UserRequest extends ApiRequest
             $logged->setBio($this->bio);
         }
         if ($this->filled('open_time')){
-            $logged->setOpenTime(Carbon::parse($this->open_time)->format('H:i a'));
+            $logged->setOpenTime(Carbon::parse($this->open_time));
         }
         if ($this->filled('close_time')){
-            $logged->setCloseTime(Carbon::parse($this->close_time)->format('H:i a'));
+            $logged->setCloseTime(Carbon::parse($this->close_time));
         }
         if ($this->filled('app_locale')){
             $logged->setAppLocale($this->app_locale);

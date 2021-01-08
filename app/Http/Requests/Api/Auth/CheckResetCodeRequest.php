@@ -9,7 +9,7 @@ use App\Traits\ResponseTrait;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-class CheckResetPasswordRequest extends ApiRequest
+class CheckResetCodeRequest extends ApiRequest
 {
     use ResponseTrait;
 
