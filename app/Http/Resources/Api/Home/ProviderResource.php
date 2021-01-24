@@ -39,6 +39,8 @@ class ProviderResource extends JsonResource
             }else{
                 $Object['is_open'] = false;
             }
+        }else{
+            $Object['is_open'] = false;
         }
         $Object['distance'] = round(Functions::distance($this->getLat(),$this->getLng(),auth('api')->user()->getLat(),auth('api')->user()->getLng(),"K"),1);
         return $Object;
