@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources\Api\Home;
 
+use App\Helpers\Constant;
 use App\Helpers\Functions;
+use App\Models\Favourite;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -42,6 +44,7 @@ class ProviderResource extends JsonResource
         }else{
             $Object['is_open'] = false;
         }
+        $Object['is_fav'] = Favourite::where('ref_id',$this->getId())->where('user_id',auth('api')->user()->getId())->where('type',Constant::FAVOURITE_TYPE['Provider'])->first()?true:false;
         $Object['distance'] = round(Functions::distance($this->getLat(),$this->getLng(),auth('api')->user()->getLat(),auth('api')->user()->getLng(),"K"),1);
         return $Object;
     }
