@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37104201-ca9c-4a86-a967-a68fef73ab71" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/User/ProviderResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LetsOrder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LetsOrder.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Food/FoodResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Food/FoodResource.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +159,7 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
       <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/AbdallaMohammed/laravel-urway" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mjB0dLomnT22ky0csmLAPSzV37" />
@@ -172,7 +175,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Admin/AppContent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Resources/Api/User" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -184,11 +187,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\localhost\LetsOrder\app\Http\Resources\Api\User" />
+      <recent name="D:\localhost\LetsOrder\vendor\AbdallaMohammed\laravel-urway" />
       <recent name="D:\localhost\LetsOrder\app\Http\Controllers\Admin\AppContent" />
       <recent name="D:\localhost\LetsOrder\app\Http\Requests\Api\Home" />
       <recent name="D:\localhost\LetsOrder\app\Models" />
-      <recent name="D:\localhost\LetsOrder\app\Http\Resources\Api\Order" />
-      <recent name="D:\localhost\LetsOrder\app\Http\Requests\Api\Order" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\localhost\LetsOrder\app\Http\Controllers\Admin\AppContent" />
@@ -213,7 +216,13 @@
       <workItem from="1611492378987" duration="155000" />
       <workItem from="1611566498140" duration="344000" />
       <workItem from="1611567020656" duration="50000" />
-      <workItem from="1611608438677" duration="121000" />
+      <workItem from="1611608438677" duration="581000" />
+      <workItem from="1611643570583" duration="595000" />
+      <workItem from="1611912674087" duration="2022000" />
+      <workItem from="1611946185350" duration="8000" />
+      <workItem from="1612359279557" duration="321000" />
+      <workItem from="1612374206184" duration="294000" />
+      <workItem from="1612541480196" duration="744000" />
     </task>
     <servers />
   </component>

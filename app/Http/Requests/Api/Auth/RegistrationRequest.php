@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api\Auth;
 use App\Helpers\Constant;
 use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
+use App\Http\Resources\Api\User\ProviderResource;
 use App\Http\Resources\Api\User\UserResource;
 use App\Traits\ResponseTrait;
 use App\Models\User;
@@ -90,7 +91,11 @@ class RegistrationRequest extends ApiRequest
         }catch (\Exception $e){
 
         }
-        return $this->successJsonResponse( [__('messages.saved_successfully')],new UserResource($user,$tokenResult->accessToken),'User');
+        if ($this->type == Constant::USER_TYPE['Customer']) {
+            return $this->successJsonResponse( [__('auth.login')], new UserResource($user,$tokenResult->accessToken),'User');
+        }else{
+            return $this->successJsonResponse( [__('auth.login')], new ProviderResource($user,$tokenResult->accessToken),'User');
+        }
     }
 
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Api\Auth;
 
+use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
+use App\Http\Resources\Api\User\ProviderResource;
 use App\Http\Resources\Api\User\UserResource;
 use App\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +58,10 @@ class LoginRequest extends ApiRequest
             $user->device_type = $this->device_type;
             $user->save();
         }
-        return $this->successJsonResponse( [__('auth.login')], new UserResource($user,$tokenResult->accessToken),'User');
+        if ($user->type == Constant::USER_TYPE['Customer']) {
+            return $this->successJsonResponse( [__('auth.login')], new UserResource($user,$tokenResult->accessToken),'User');
+        }else{
+            return $this->successJsonResponse( [__('auth.login')], new ProviderResource($user,$tokenResult->accessToken),'User');
+        }
     }
 }
