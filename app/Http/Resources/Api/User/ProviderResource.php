@@ -64,8 +64,6 @@ class ProviderResource extends JsonResource
         }else{
             $Object['is_open'] = false;
         }
-        $Object['is_fav'] = Favourite::where('ref_id',$this->getId())->where('user_id',auth('api')->user()->getId())->where('type',Constant::FAVOURITE_TYPE['Provider'])->first()?true:false;
-        $Object['distance'] = round(Functions::distance($this->getLat(),$this->getLng(),auth('api')->user()->getLat(),auth('api')->user()->getLng(),"K"),1);
         $Subscription = UserSubscription::where('user_id',$this->getId())->where('status',Constant::SUBSCRIPTION_STATUSES['Approved'])->get();
         $Object['is_subscribed'] = count($Subscription)>0;
         $Object['Subscriptions'] = ($Subscription)?UserSubscriptionResource::collection($Subscription):null;
