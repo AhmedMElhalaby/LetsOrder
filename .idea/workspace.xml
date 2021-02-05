@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37104201-ca9c-4a86-a967-a68fef73ab71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/User/ProviderResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LetsOrder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LetsOrder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="37104201-ca9c-4a86-a967-a68fef73ab71" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -222,7 +217,7 @@
       <workItem from="1611946185350" duration="8000" />
       <workItem from="1612359279557" duration="321000" />
       <workItem from="1612374206184" duration="294000" />
-      <workItem from="1612541480196" duration="744000" />
+      <workItem from="1612541480196" duration="1638000" />
     </task>
     <servers />
   </component>
