@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Constant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\CheckResetCodeRequest;
 use App\Http\Requests\Api\Auth\ForgetPasswordRequest;
@@ -52,7 +53,12 @@ class AuthController extends Controller
      */
     public function show(Request $request): JsonResponse
     {
-        return $this->successJsonResponse([],new UserResource($request->user(),$request->bearerToken()),'User');
+        $user = $request->user();
+        if ($user->type == Constant::USER_TYPE['Customer']) {
+            return $this->successJsonResponse( [__('auth.login')], new UserResource($user,$request->bearerToken()),'User');
+        }else{
+            return $this->successJsonResponse( [__('auth.login')], new \App\Http\Resources\Api\User\ProviderResource($user,$request->bearerToken()),'User');
+        }
     }
     /**
      * Show user profile
