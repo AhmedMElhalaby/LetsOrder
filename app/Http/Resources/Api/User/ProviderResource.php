@@ -47,7 +47,7 @@ class ProviderResource extends JsonResource
         $Object['lat'] = $this->getLat();
         $Object['lng'] = $this->getLng();
         $Object['type'] = $this->type;
-        $Object['provide_type'] = $this->provide_type;
+        $Object['provide_type'] = $this->provider_type;
         $Object['bio'] = $this->getBio();
         $Object['open_time'] = $this->getOpenTime();
         $Object['close_time'] = $this->getCloseTime();
