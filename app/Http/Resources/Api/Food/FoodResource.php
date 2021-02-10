@@ -28,7 +28,7 @@ class FoodResource extends JsonResource
         $Objects['price'] = $this->getPrice();
         $Objects['size'] = $this->getSize();
         $Objects['is_active'] = $this->isIsActive();
-        $Objects['rate'] = $this->review()->avg('rate')??0;
+        $Objects['rate'] = $this->review()->avg('rate')??5;
         $Objects['is_fav'] = Favourite::where('ref_id',$this->getId())->where('user_id',auth('api')->user()->getId())->where('type',Constant::FAVOURITE_TYPE['Food'])->first()?true:false;
         $Objects['Media'] = MediaResource::collection($this->media);
         return $Objects;

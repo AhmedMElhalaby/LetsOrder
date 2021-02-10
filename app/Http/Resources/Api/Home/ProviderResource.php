@@ -31,7 +31,7 @@ class ProviderResource extends JsonResource
         $Object['bio'] = $this->getBio();
         $Object['open_time'] = $this->getOpenTime();
         $Object['close_time'] = $this->getCloseTime();
-        $Object['rate'] = $this->review()->avg('rate')??0;
+        $Object['rate'] = $this->review()->avg('rate')??5;
         if($this->getOpenTime() &&$this->getCloseTime()){
             $startTime = Carbon::parse($this->getOpenTime())->format('H:i');
             $endTime = Carbon::parse($this->getCloseTime())->format('H:i');

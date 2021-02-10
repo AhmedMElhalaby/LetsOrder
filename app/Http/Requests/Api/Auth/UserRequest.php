@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api\Auth;
 
+use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\User\UserResource;
 use App\Traits\ResponseTrait;
@@ -95,7 +96,10 @@ class UserRequest extends ApiRequest
         $tokenResult = $logged->createToken('Personal Access Token');
         $token = $tokenResult->token;
         $token->save();
-        return $this->successJsonResponse( [__('messages.updated_successful')],new UserResource($logged,$tokenResult->accessToken),'User');
-
+        if ($logged->type == Constant::USER_TYPE['Customer']) {
+            return $this->successJsonResponse( [__('auth.login')], new UserResource($logged,$tokenResult->accessToken),'User');
+        }else{
+            return $this->successJsonResponse( [__('auth.login')], new \App\Http\Resources\Api\User\ProviderResource($logged,$tokenResult->accessToken),'User');
+        }
     }
 }
