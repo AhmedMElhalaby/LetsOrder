@@ -84,7 +84,7 @@ class UpdateRequest extends ApiRequest
                 break;
             }
             case Constant::ORDER_STATUSES['NotDelivered']:{
-                if ($Object->getStatus() !=Constant::ORDER_STATUSES['Approved']) {
+                if ($Object->getStatus() !=Constant::ORDER_STATUSES['Received']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['NotDelivered']);
@@ -94,15 +94,26 @@ class UpdateRequest extends ApiRequest
                 Functions::SendNotification($Object->provider,'Order Not Delivered','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
+            case Constant::ORDER_STATUSES['Received']:{
+                if (($Object->getStatus() !=Constant::ORDER_STATUSES['Approved']) ) {
+                    return $this->failJsonResponse([__('messages.wrong_sequence')]);
+                }
+                $Object->setStatus(Constant::ORDER_STATUSES['Received']);
+                $Object->setIsFinished(true);
+                $Object->save();
+                OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Received']);
+                Functions::SendNotification($Object->user,'Order Received','Customer Received the order !','تم تسليم الطلب !','قام المستخدم باستلام الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+                break;
+            }
             case Constant::ORDER_STATUSES['Finished']:{
-                if (($Object->getStatus() !=Constant::ORDER_STATUSES['Approved']) || ($Object->getStatus() !=Constant::ORDER_STATUSES['NotDelivered'])|| ($Object->getStatus() !=Constant::ORDER_STATUSES['NotReceived'])) {
+                if (($Object->getStatus() !=Constant::ORDER_STATUSES['Received']) || ($Object->getStatus() !=Constant::ORDER_STATUSES['NotDelivered'])|| ($Object->getStatus() !=Constant::ORDER_STATUSES['NotReceived'])) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Finished']);
                 $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Finished']);
-                Functions::SendNotification($Object->provider,'Order Not Delivered','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+                Functions::SendNotification($Object->provider,'Order Finished','Customer confirmed receiving the order !','تم انهاء الطلب !','أكد المستخدم استلامه للطلب !',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
         }

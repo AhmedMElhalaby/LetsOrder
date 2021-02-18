@@ -76,8 +76,9 @@ class Constant
         'Rejected'=>3,
         'Canceled'=>4,
         'Finished'=>5,
-        'NotReceived'=>6,
-        'NotDelivered'=>7,
+        'Received'=>6,
+        'NotReceived'=>7,
+        'NotDelivered'=>8,
     ];
     const ORDER_STATUSES_RULES = '1,2,3,4,5,6,7';
     const REVIEW_TYPE=[
