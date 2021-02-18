@@ -54,6 +54,7 @@ class UpdateRequest extends ApiRequest
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Rejected']);
                 $Object->setRejectReason(@$this->reject_reason);
+                $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Rejected']);
                 Functions::SendNotification($Object->user,'Order Rejected','Provider Rejected your order !','الرفض على الطلب !','قام المزود برفض طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
@@ -65,6 +66,7 @@ class UpdateRequest extends ApiRequest
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Canceled']);
                 $Object->setCancelReason(@$this->cancel_reason);
+                $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Canceled']);
                 Functions::SendNotification($Object->provider,'Order Canceled','Customer Canceled the order !','إلغاء الطلب !','قام المستخدم بإلغاء الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
@@ -75,6 +77,7 @@ class UpdateRequest extends ApiRequest
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['NotReceived']);
+                $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['NotReceived']);
                 Functions::SendNotification($Object->user,'Order Not Received','Customer did not receive the order !','لم يتم استلام الطلب !','لم يقم المستخدم باستلام الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
@@ -85,6 +88,7 @@ class UpdateRequest extends ApiRequest
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['NotDelivered']);
+                $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['NotDelivered']);
                 Functions::SendNotification($Object->provider,'Order Not Delivered','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
@@ -95,6 +99,7 @@ class UpdateRequest extends ApiRequest
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Finished']);
+                $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Finished']);
                 Functions::SendNotification($Object->provider,'Order Not Delivered','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
