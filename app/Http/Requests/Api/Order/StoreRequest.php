@@ -96,6 +96,8 @@ class StoreRequest extends ApiRequest
             $CouponHistory->save();
         }
         OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['PendingApproval']);
+        Functions::SendNotification($Object->provider,'New Order','You have new order !','طلب جديد !','لديك طلب جديد !',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+
         return $this->successJsonResponse([__('messages.created_successful')],new OrderResource($Object),'Order');
     }
 }
