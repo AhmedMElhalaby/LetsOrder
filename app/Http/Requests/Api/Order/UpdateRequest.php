@@ -99,7 +99,6 @@ class UpdateRequest extends ApiRequest
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Received']);
-                $Object->setIsFinished(true);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Received']);
                 Functions::SendNotification($Object->user,'Order Received','Customer Received the order !','تم تسليم الطلب !','قام المستخدم باستلام الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
