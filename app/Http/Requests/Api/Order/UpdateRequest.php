@@ -105,7 +105,7 @@ class UpdateRequest extends ApiRequest
                 break;
             }
             case Constant::ORDER_STATUSES['Finished']:{
-                if (($Object->getStatus() !=Constant::ORDER_STATUSES['Received']) || ($Object->getStatus() !=Constant::ORDER_STATUSES['NotDelivered'])|| ($Object->getStatus() !=Constant::ORDER_STATUSES['NotReceived'])) {
+                if (($Object->getStatus() ==Constant::ORDER_STATUSES['Received']) || ($Object->getStatus() ==Constant::ORDER_STATUSES['NotDelivered'])|| ($Object->getStatus() ==Constant::ORDER_STATUSES['NotReceived'])) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Finished']);
