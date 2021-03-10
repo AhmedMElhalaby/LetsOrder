@@ -38,10 +38,9 @@ class Constant
         'Canceled'=>3,
     ];
     const PAYMENT_METHOD = [
-        'BankTransfer'=>1,
-        'Cash'=>2,
+        'Tap'=>1,
     ];
-    const PAYMENT_METHOD_RULES = '1,2';
+    const PAYMENT_METHOD_RULES = '1';
 
     const TRANSACTION_STATUS = [
         'Pending'=>1,

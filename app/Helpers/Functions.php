@@ -3,24 +3,16 @@
 
 namespace App\Helpers;
 
-
-use App\Models\Auction;
-use App\Models\Bid;
-use App\Models\Coupon;
 use App\Models\CouponHistory;
-use App\Models\Favourite;
 use App\Models\Notification;
 use App\Models\PasswordReset;
-use App\Models\Setting;
 use App\Models\Transaction;
-use App\Models\User;
 use App\Models\VerifyAccounts;
 use App\Notifications\PasswordReset as PasswordResetNotification;
 use App\Notifications\VerifyAccount;
 use App\Traits\ResponseTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Functions
@@ -252,13 +244,110 @@ class Functions
     }
     public static function CheckPayment($type,$Transaction){
         switch ($type){
-            case Constant::PAYMENT_METHOD['BankTransfer']:
-            case Constant::PAYMENT_METHOD['Cash']:{
-                return true;
+            case Constant::PAYMENT_METHOD['Tap']:{
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://api.tap.company/v2/authorize/".$Transaction->getPaymentToken(),
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "GET",
+                    CURLOPT_POSTFIELDS => "{}",
+                    CURLOPT_HTTPHEADER => array(
+                        "authorization: Bearer ".config('app.tap_sk')
+                    ),
+                ));
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                curl_close($curl);
+                $response = json_decode($response);
+                if ($err) {
+                    echo false;
+                } else {
+                    if (@$response->status == 'AUTHORIZED'){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
                 break;
             }
+//            case Constant::PAYMENT_METHOD['Paypal']:{
+//                $ch = curl_init();
+//                curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v1/oauth2/token');
+//                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//                curl_setopt($ch, CURLOPT_POST, 1);
+//                curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
+//                curl_setopt($ch, CURLOPT_USERPWD, config('app.paypal_username') . ':' . config('app.paypal_secret'));
+//                $headers = array();
+//                $headers[] = 'Accept: application/json';
+//                $headers[] = 'Accept-Language: en_US';
+//                $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+//                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//                $result = curl_exec($ch);
+//                if (curl_errno($ch)) {
+//                    return false;
+//                }
+//                curl_close($ch);
+//                $result = json_decode($result);
+//                if (isset($result->access_token)){
+//                    $curl = curl_init();
+//                    curl_setopt_array($curl, array(
+//                        CURLOPT_URL => "https://api.sandbox.paypal.com/v1/payments/payment/".$Transaction->getPaymentToken(),
+//                        CURLOPT_RETURNTRANSFER => true,
+//                        CURLOPT_ENCODING => "",
+//                        CURLOPT_MAXREDIRS => 10,
+//                        CURLOPT_TIMEOUT => 30,
+//                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//                        CURLOPT_CUSTOMREQUEST => "GET",
+//                        CURLOPT_POSTFIELDS => "{}",
+//                        CURLOPT_HTTPHEADER => array(
+//                            "authorization: Bearer ".$result->access_token
+//                        ),
+//                    ));
+//                    $response = curl_exec($curl);
+//                    if (curl_errno($curl)) {
+//                        return false;
+//                    }
+//                    curl_close($curl);
+//                    $response = json_decode($response);
+//                    if (isset($response->state) && $response->state == 'approved'){
+//                        return true;
+//                    }else{
+//                        if(isset($response->transactions) && isset($response->payer) && isset($response->payer->payer_info) && isset($response->payer->payer_info->payer_id) ){
+//                            $ch = curl_init();
+//                            curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v1/payments/payment/'.$Transaction->getPaymentToken().'/execute');
+//                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//                            curl_setopt($ch, CURLOPT_POST, 1);
+//                            $Object['payer_id'] =$response->payer->payer_info->payer_id;
+//                            $Object['transactions'] =$response->transactions;
+//                            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($Object));
+//                            $headers = array();
+//                            $headers[] = 'Content-Type: application/json';
+//                            $headers[] = 'Authorization: Bearer '.$result->access_token;
+//                            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//
+//                            $res = curl_exec($ch);
+//                            if (curl_errno($ch)) {
+//                                return false;
+//                            }
+//                            curl_close($ch);
+//                            $res = json_decode($res);
+//
+//                            if (isset($res->state) && $res->state == 'approved'){
+//                                return true;
+//                            }
+//                        }
+//                    }
+//                }
+//                return false;
+//                break;
+//            }
         }
     }
+
 
     public static function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         if (($lat1 == $lat2) && ($lon1 == $lon2)) {
