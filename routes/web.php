@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/privacy', 'HomeController@privacy');
 Route::get('user/verify', 'HomeController@verify');
+Route::get('verify_payment', 'HomeController@verify_payment');
 

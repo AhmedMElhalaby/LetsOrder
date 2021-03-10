@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaypalVerifyPaymentRequest;
+use App\Http\Requests\VerifyPaymentRequest;
 use App\Models\User;
 use App\Models\VerifyAccounts;
 use Illuminate\Http\Request;
@@ -16,6 +18,9 @@ class HomeController extends Controller
         return view('privacy');
     }
 
+    public function verify_payment(VerifyPaymentRequest $request){
+        return $request->persist();
+    }
     public function verify(Request $request){
         if($request->has('token')){
             $verify = VerifyAccounts::where('token',$request->token)->first();
