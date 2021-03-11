@@ -130,6 +130,7 @@ return [
     */
 
     'color' => env('APP_COLOR', 'blue'),
+    'tap_sk' => env('TAP_SK', ''),
 
     'notification_key' => env('NOTIFICATION_KEY', ''),
 
