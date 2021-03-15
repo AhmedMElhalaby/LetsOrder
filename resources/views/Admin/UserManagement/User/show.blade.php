@@ -71,35 +71,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header text-center" style="padding: 5px" data-background-color="{{ config('app.color') }}">
-                                    <h4 class="title"> {{__('crud.Document.crud_names')}}</h4>
-                                </div>
-                                <div class="card-content table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th style="border-top: none !important;">{{__('crud.Document.document_type_id')}}</th>
-                                            <th style="border-top: none !important;">{{__('crud.Document.front_face')}}</th>
-                                            <th style="border-top: none !important;">{{__('crud.Document.back_face')}}</th>
-                                            <th style="border-top: none !important;">{{__('crud.Document.expiry_date')}}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach(\App\Models\Document::where('user_id',$Object->getId())->get() as $Document)
-                                            <tr>
-                                                <td>{{(app()->getLocale() =='ar')?$Document->document_type->getNameAr():$Document->document_type->getName()}}</td>
-                                                <td><a href="{{asset($Document->getFrontFace())}}" download><i class="fa fa-download"></i></a></td>
-                                                <td><a href="{{asset($Document->getBackFace())}}" download><i class="fa fa-download"></i></a></td>
-                                                <td>{{($Document->getExpiryDate() != null)?$Document->getExpiryDate():'-'}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
