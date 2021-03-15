@@ -192,8 +192,10 @@ return [
             ''.Constant::ORDER_STATUSES['Approved']=>'Approved',
             ''.Constant::ORDER_STATUSES['Rejected']=>'Rejected',
             ''.Constant::ORDER_STATUSES['Canceled']=>'Canceled',
-            ''.Constant::ORDER_STATUSES['NotDelivered']=>'Not Delivered',
+            ''.Constant::ORDER_STATUSES['Finished']=>'Finished',
+            ''.Constant::ORDER_STATUSES['Received']=>'Received',
             ''.Constant::ORDER_STATUSES['NotReceived']=>'Not Received',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'Not Delivered',
         ]
     ],
 ];

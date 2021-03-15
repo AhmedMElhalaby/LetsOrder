@@ -192,8 +192,10 @@ return [
             ''.Constant::ORDER_STATUSES['Approved']=>'تمت الموافقة',
             ''.Constant::ORDER_STATUSES['Rejected']=>'مرفوض',
             ''.Constant::ORDER_STATUSES['Canceled']=>'ملغي',
-            ''.Constant::ORDER_STATUSES['NotDelivered']=>'لم يتم التسليم',
+            ''.Constant::ORDER_STATUSES['Finished']=>'منتهي',
+            ''.Constant::ORDER_STATUSES['Received']=>'تم الاستلام',
             ''.Constant::ORDER_STATUSES['NotReceived']=>'لم يتم الاستلام',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'لم يتم التوصيل',
         ]
     ],
 ];

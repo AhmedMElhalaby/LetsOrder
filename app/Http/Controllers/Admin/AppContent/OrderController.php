@@ -61,6 +61,7 @@ class OrderController extends Controller
                     Constant::ORDER_STATUSES['Rejected'] =>__('crud.Order.Statuses.'.Constant::ORDER_STATUSES['Rejected'],[],session('my_locale')),
                     Constant::ORDER_STATUSES['Canceled'] =>__('crud.Order.Statuses.'.Constant::ORDER_STATUSES['Canceled'],[],session('my_locale')),
                     Constant::ORDER_STATUSES['Finished'] =>__('crud.Order.Statuses.'.Constant::ORDER_STATUSES['Finished'],[],session('my_locale')),
+                    Constant::ORDER_STATUSES['Received'] =>__('crud.Order.Statuses.'.Constant::ORDER_STATUSES['Received'],[],session('my_locale')),
                     Constant::ORDER_STATUSES['NotReceived'] =>__('crud.Order.Statuses.'.Constant::ORDER_STATUSES['NotReceived'],[],session('my_locale')),
                     Constant::ORDER_STATUSES['NotDelivered'] =>__('crud.Order.Statuses.'.Constant::ORDER_STATUSES['NotDelivered'],[],session('my_locale')),
                 ],
