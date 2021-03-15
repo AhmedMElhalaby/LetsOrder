@@ -123,8 +123,7 @@ return [
         ],
 
         'PaymentMethod'=>[
-            \App\Helpers\Constant::PAYMENT_METHOD['BankTransfer']=>'Bank Transfer',
-            \App\Helpers\Constant::PAYMENT_METHOD['Cash']=>'Cash',
+            \App\Helpers\Constant::PAYMENT_METHOD['Tap']=>'Tap',
         ],
         'Links'=>[
             'approve'=>'Approve',

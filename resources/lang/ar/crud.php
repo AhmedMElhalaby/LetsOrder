@@ -123,8 +123,7 @@ return [
             ''.\App\Helpers\Constant::SUBSCRIPTION_STATUSES['Canceled']=>'ملغي',
         ],
         'PaymentMethod'=>[
-            \App\Helpers\Constant::PAYMENT_METHOD['BankTransfer']=>'حوالة بنكية',
-            \App\Helpers\Constant::PAYMENT_METHOD['Cash']=>'كاش',
+            \App\Helpers\Constant::PAYMENT_METHOD['Tap']=>'تاب',
         ],
         'Links'=>[
             'approve'=>'قبول',
